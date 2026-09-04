@@ -1,0 +1,26 @@
+{
+  "attempts": 329,
+  "budgets": {
+    "claudecode": 4,
+    "codex": 4,
+    "openclaw": 4
+  },
+  "content_verdicts": 323,
+  "escalations": [],
+  "evidence_attempts": 329,
+  "evidence_window_days": 400.0,
+  "fault_rate": 0.0182370820668693,
+  "harness_faults": 6,
+  "high_water": {
+    "codex": 2,
+    "openclaw": 2
+  },
+  "latency_evidence": "ok",
+  "max_admission_wait_s": 0.009338855743408203,
+  "pass_p50_s": 54.18664598464966,
+  "pass_p95_s": 120.49796509742737,
+  "quota_faults": 0,
+  "recent_pass_p50_s": 54.18664598464966,
+  "recent_pass_p95_s": 120.49796509742737,
+  "window_days": 400.0
+}
