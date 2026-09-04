@@ -1,6 +1,6 @@
 # Public-safety inventory (staging, 2026-09-04)
 
-Status: **private staging**. Nothing here is public. This file is the human-readable record of what every file is, where it came from, what was removed, and what still needs a decision. Delete it before publication or keep it as `docs/PROVENANCE.md` after trimming the decision items.
+Status: **private staging**, pushed to the PRIVATE repository `justinzealand/executive-ai-portfolio` on 2026-09-04. Nothing here is public. This file is the human-readable record of what every file is, where it came from, what was removed, and what still needs a decision. Delete it before publication or keep it as `docs/PROVENANCE.md` after trimming the decision items.
 
 Gate: `python3 scripts/check_public_safety.py` → **clean, 0 findings** (patterns: absolute home paths, tailnet hostnames, non-loopback IPs, Slack channel ids and names, emails, phone numbers, Notion/artifact URLs, credential-store references, personal-domain product names, session UUIDs, secret shapes). Two literals are hand-allowed: the LinkedIn URL in the README, and a test fixture string containing no real path.
 
@@ -42,7 +42,11 @@ Exhibit tests: `cd exhibits/04-governance-as-code && python3 -m pytest -q` → *
 
 Raw prompt corpora and classification datasets; discovery answers; session transcripts; the five registries (allowlist, exceptions, surfaces, always-on, known-chronic); recurring-costs; personal-domain products (continuity, mail triage, email briefs, finance, school, tickets, dashboard, decisions store, wiki content); `delegated-work-host` and `codex-local-supervisor` code (operator bindings); all agent-config repos; the memory directory; the two evidence audits' private coaching notes; the competency matrix (held back from the initial README per review); phone, email, salary, Notion links.
 
-## ⛔ Decisions for the operator before publication
+## Decisions settled 2026-09-04 (review round 2)
+
+1. Exhibit 08: generalized wording kept. 2. Exhibit 09: operator-interaction bullet paraphrased (operator is not the routine implementation or PR-review layer). 3. Exhibit 04: generic tilde paths kept. 4. Licensing: MIT for `exhibits/04-governance-as-code/` and `scripts/`, CC BY 4.0 for everything else (`LICENSE.md`, `LICENSE-CODE`, `LICENSE-CONTENT`). 5. Field notes: all 12 kept. 6. Contact: LinkedIn only. Also applied: positive authorship framing in README and Case Study 1; LangGraph removed from the Case Study 1 runtime inventory, Hermes kept as an evaluated runtime.
+
+## Superseded decision list (kept for the record)
 
 1. **Exhibit 08 candor.** The verbatim problem baseline says the operator's attention will become "materially more constrained when a full-time job begins". I generalized it to "when the operator's availability is materially reduced" and recorded the edit in the provenance line. Confirm the generalization, or restore the original, or drop the bullet.
 2. **Exhibit 09 wording.** The boundaries say "Justin does not use git or review diffs/PRs/code." It is accurate and consistent with the charter's "operator does not review PRs" design, but a skeptical CTO may read it cold. Recommendation: keep it; the README and METHOD frame it as a design choice.
