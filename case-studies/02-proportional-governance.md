@@ -1,6 +1,6 @@
 # Case Study 2 — Governing autonomous work without eliminating autonomy
 
-**Thesis:** governance must be proportional to consequence, and code should enforce the small number of boundaries that genuinely matter. This case study includes the controls I over-built, retired too abruptly, and rebuilt.
+**Thesis:** governance must be proportional to consequence, and deterministic code (not prose) should enforce the small number of boundaries that genuinely matter. This case study includes the controls I over-built, retired too abruptly, and rebuilt.
 
 ## The question
 

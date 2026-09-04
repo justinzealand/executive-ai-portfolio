@@ -14,7 +14,7 @@ Tools: Claude Code and Codex as engineering agents; OpenClaw as the always-on co
 
 - **Use:** designed, directed, specified, governed, configured, integrated, operated, tested, evaluated, iterated.
 - **"Built"** means built through LLM-directed implementation under constraints I set. It never means hand-written.
-- Git author fields read "Justin Zealand" on most commits because commits land through hooks and ship paths I own. Commit trailers naming an agent are present on only part of the history and understate agent authorship. The charter, not the trailer, is the authoritative statement: implementation is LLM-authored.
+- Do not infer authorship from Git metadata. Most commits carry my name because they land through hooks and ship paths I own, and only part of the history carries a trailer naming the agent that wrote the code. The authoritative statement is the platform charter, which requires that implementation be written by AI coding agents under my direction; the metadata understates that.
 - Where a document in this repository was itself drafted by an agent from my direction, it says so in its provenance note.
 
 ## 3. Evidence taxonomy
@@ -29,7 +29,7 @@ Every metric in the README or a case study has a source that can be regenerated 
 
 | Metric | Source | What it supports | What it does not support |
 |---|---|---|---|
-| ~5-month window (2026-03-27 →) | earliest attributable session and first commit in the lab repositories | sustained operation | any 2025 engineering work |
+| ~5-month window (2026-03-27 →) | earliest attributable session and first commit in the lab repositories | sustained operation | outcomes or scale; it is a duration, not a result |
 | 96 consecutive days of health observations | one dated JSON per day from the deterministic health collector, no gaps | continuity of operation | that the platform was healthy (the verdict was red on most of those days) |
 | Review kernel: 329 attempts, 323 content verdicts (98.2%), 6 harness faults (1.8%), p50 54s, p95 121s | the kernel's own packet ledger, regenerated 2026-09-04 (Exhibit 03) | reliability of the review harness against targets I froze in advance | quality of the reviewed plans; enterprise service levels |
 | 4,419 operator prompts / 240 manually reviewed samples over 30 days | a reproducible prompt-log analysis with a documented correction (Exhibit 08) | the size and shape of the human coordination burden | productivity improvement; anything about other operators |
@@ -38,16 +38,14 @@ Activity counts (commits, pull requests, tests, memory files, lines of code) exi
 
 ## 5. Claims I do not make
 
-- Personal authorship of the implementation code.
-- AI engineering work before March 2026 (2025 was study and evaluation).
+- Personal authorship of the implementation code. It was written by AI coding agents under my direction, not by me and not by another developer.
 - Model training, fine-tuning, or machine-learning research.
 - Enterprise-scale, multi-tenant, customer-facing, or commercial production.
 - Quantified productivity, quality, revenue, or cost improvement from the lab.
 - Unconstrained autonomy. The architecture uses approval, no-send, local-only, and fail-closed boundaries on purpose.
-- That the platform is uniformly healthy or self-healing. Its own health verdict was red on most recorded days; some remediation automation became a source of failures.
+- That the platform is uniformly healthy or self-healing. Its own health verdict was red on most recorded days, some remediation automation became a source of failures, and the verdict itself was sometimes wrong in both directions: false reds from stale proxies and at least one false green from a model summarizing a non-green report. Making the signal trustworthy was its own line of work.
 - That agents "freely collaborated." The fabric is orchestrated consultation with one retained owner.
 - Security certification, external audit, penetration testing, or a service-level agreement.
-- Team leadership during this period. This was one operator directing AI runtimes.
 
 ## 6. Source discipline for this repository
 
