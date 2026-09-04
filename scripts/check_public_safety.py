@@ -48,6 +48,8 @@ def main() -> int:
             if any(lit in line for lit in ALLOWED_LITERALS):
                 continue
             for name, rx in PATTERNS.items():
+                if name == "slack channel name" and f.suffix == ".svg":
+                    continue  # CSS id selectors (#my-svg) are not channel names
                 m = rx.search(line)
                 if m:
                     hits += 1
