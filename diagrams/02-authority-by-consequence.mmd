@@ -1,10 +1,7 @@
 flowchart LR
-  subgraph tiers[Authority by consequence]
-    direction TB
-    T0[Observe / recommend<br/>always allowed] --> T1[Reversible local change<br/>autonomous, notify]
-    T1 --> T2[External write, new service,<br/>data-policy change<br/>needs operator]
-    T2 --> T3[Money, identity, deletion of<br/>operator data<br/>never delegated]
-  end
-  R[(Registries:<br/>allowlist · exceptions ·<br/>always-on)] -->|read at runtime| G{Hook}
-  G -->|confirmed violation| B[Block + audit line]
-  G -->|ambiguous| A[Allow, fail open]
+  T0["Observe or recommend<br/>always allowed"] --> T1["Reversible local change<br/>autonomous, notify"]
+  T1 --> T2["External write, new service,<br/>data-policy change<br/>needs operator"]
+  T2 --> T3["Money, identity, deletion of<br/>operator data<br/>never delegated"]
+  R[("Registries<br/>allowlist, exceptions,<br/>always-on")] -->|read at runtime| G{"Hook"}
+  G -->|confirmed violation| B["Block and audit line"]
+  G -->|ambiguous| A["Allow, fail open"]

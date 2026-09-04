@@ -26,14 +26,14 @@ A private environment spanning Claude Code, Codex, OpenClaw, Hermes, and local m
 
 ```mermaid
 flowchart TB
-  O[Objective + success criteria] --> P[Plan: inherits charter constraints]
-  P --> RV[Independent model review<br/>deterministic kernel]
-  RV -->|ship verdict| I[Implementation by a coding agent<br/>isolated worktree]
-  I --> S[Ship: PR + verification]
-  S --> CL[Closeout: decisions, learnings,<br/>open items → durable memory]
+  O["Objective and success criteria"] --> P["Plan<br/>inherits charter constraints"]
+  P --> RV["Independent model review<br/>deterministic kernel"]
+  RV -->|ship verdict| I["Implementation by a coding agent<br/>isolated worktree"]
+  I --> S["Ship<br/>PR and verification"]
+  S --> CL["Closeout<br/>decisions, learnings, open items<br/>to durable memory"]
   CL --> O
-  RV -->|needs operator| H((Human decision))
-  H --> P
+  RV -->|needs operator| HD(("Human decision"))
+  HD --> P
 ```
 
 ## What happened

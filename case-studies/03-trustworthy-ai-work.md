@@ -20,23 +20,27 @@ Around it, observability for the whole environment: deterministic daily health c
 
 ```mermaid
 flowchart TB
-  subgraph L1[Probabilistic judgment]
-    M1[Reviewer: Codex] 
-    M2[Reviewer: OpenClaw]
-    M3[Implementer: Claude Code]
+  subgraph L1["Probabilistic judgment"]
+    M1["Reviewer: Codex"]
+    M2["Reviewer: OpenClaw"]
+    M3["Implementer: Claude Code"]
   end
-  subgraph L2[Deterministic control]
-    K[Review kernel: frozen packet,<br/>append-only event log, state machine]
-    HC[Health collector → verdict]
-    AS[Alert sender: pure code,<br/>no model in the send path]
-    FC[Fact-check guardrails on<br/>reviewer claims]
+  subgraph L2["Deterministic control"]
+    K["Review kernel<br/>frozen packet, append-only log,<br/>state machine"]
+    FC["Fact-check guardrails<br/>on reviewer claims"]
+    HC["Health collector to verdict"]
+    AS["Alert sender<br/>pure code, no model in the send path"]
   end
-  subgraph L3[Human accountability]
-    HU[Objectives, risk tolerance,<br/>authorization at consequence]
+  subgraph L3["Human accountability"]
+    HU["Objectives, risk tolerance,<br/>authorization at consequence"]
   end
-  M1 & M2 --> K --> HU
-  M3 --> FC --> K
-  HC --> AS --> HU
+  M1 --> K
+  M2 --> K
+  M3 --> FC
+  FC --> K
+  K --> HU
+  HC --> AS
+  AS --> HU
 ```
 
 ## What happened

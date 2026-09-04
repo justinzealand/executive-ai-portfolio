@@ -12,17 +12,17 @@ Field evidence and executive lessons from five months operating a private AI-nat
 
 ```mermaid
 flowchart LR
-  H[Human: objectives, architecture,<br/>consequence boundaries, acceptance] --> C
-  subgraph C[Deterministic control plane]
-    direction TB
-    R[Charter + registries<br/>enforced by hooks] --> Q[Task store, leases,<br/>retries, receipts]
-    Q --> V[Review kernel +<br/>health checks + alerts]
-  end
-  C --> A1[Claude Code]
-  C --> A2[Codex]
-  C --> A3[OpenClaw]
-  C --> A4[Local models]
-  A1 & A2 & A3 & A4 --> E[Evidence: tests, ledgers,<br/>verdicts, morning digest]
+  H["Human<br/>objectives, architecture,<br/>consequence boundaries, acceptance"] --> R
+  R["Charter and registries<br/>enforced by hooks"] --> Q["Task store<br/>leases, retries, receipts"]
+  Q --> V["Review kernel,<br/>health checks, alerts"]
+  V --> A1["Claude Code"]
+  V --> A2["Codex"]
+  V --> A3["OpenClaw"]
+  V --> A4["Local models"]
+  A1 --> E
+  A2 --> E
+  A3 --> E
+  A4 --> E["Evidence<br/>tests, ledgers, verdicts,<br/>morning digest"]
   E --> H
 ```
 
