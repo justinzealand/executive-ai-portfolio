@@ -24,17 +24,10 @@ A private environment spanning Claude Code, Codex, OpenClaw, Hermes, and local m
 - **A governed lifecycle.** Isolated workspaces, structured plans, review and acceptance gates, durable evidence, controlled delivery.
 - **Deterministic control around probabilistic workers.** Models do the work that needs interpretation; conventional software keeps authority over state, permissions, approvals, external actions, and evidence of completion.
 
-```mermaid
-flowchart TB
-  O["Objective and<br/>success criteria"] --> P["Plan inherits<br/>charter constraints"]
-  P --> RV["Independent review<br/>deterministic kernel"]
-  RV -->|ship verdict| I["Coding agent<br/>implements in an<br/>isolated worktree"]
-  I --> S["Ship: PR and<br/>verification"]
-  S --> CL["Closeout to<br/>durable memory"]
-  CL --> O
-  RV -->|needs operator| HD(("Human<br/>decision"))
-  HD --> P
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../diagrams/01-objective-lifecycle.dark.svg">
+  <img alt="Objective lifecycle: objective, plan, independent review, implementation, ship, closeout, with human decisions at review" src="../diagrams/01-objective-lifecycle.light.svg">
+</picture>
 
 ## What happened
 

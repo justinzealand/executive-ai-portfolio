@@ -14,7 +14,7 @@ Exhibit tests: `cd exhibits/04-governance-as-code && python3 -m pytest -q` → *
 | `METHOD.md` | Attribution rules, evidence taxonomy, per-metric interpretation table, the claims-not-made list (moved here from the README per review), source discipline. |
 | `case-studies/01..03` | Tightened from the drafted case studies (≈20% shorter), same section structure, one diagram each, Evidence footer added. |
 | `FIELD-NOTES.md` | 12 lessons paraphrased from the private memory corpus; incident-specific names and ids removed. |
-| `diagrams/*.mmd` | The four mermaid diagrams, also embedded inline. |
+| `diagrams/*.mmd`, `diagrams/*.light.svg`, `diagrams/*.dark.svg` | Four mermaid diagrams (source) plus pre-rendered SVGs embedded via `<picture>` with light/dark variants, because GitHub's mermaid iframe rendered intermittently and its blob view clipped node labels. |
 | `scripts/check_public_safety.py` | The gate. |
 
 ## Copied or excerpted from private artifacts

@@ -21,15 +21,10 @@ Autonomy should not be binary. Authority should be granted by the consequence of
 - **Graduated unattended operation.** Nightly closeout, backlog processing, monitoring, and memory maintenance run unattended, each with a kill switch, an escalation path, caps, and post-action verification.
 - **Controls earn their teeth.** A new control ships advisory-only; it may block only after a soak of at least 20 operator-adjudicated flags over at least 14 days with a false-positive rate at or below 5%. The gate never scores itself.
 
-```mermaid
-flowchart LR
-  T0["Observe, recommend<br/>always allowed"] --> T1["Reversible change<br/>autonomous, notify"]
-  T1 --> T2["External write,<br/>new service:<br/>needs operator"]
-  T2 --> T3["Money, identity,<br/>data deletion:<br/>never delegated"]
-  R[("Registries:<br/>allowlist,<br/>exceptions,<br/>always-on")] -->|read at runtime| G{"Hook"}
-  G -->|confirmed violation| B["Block and audit"]
-  G -->|ambiguous| A["Allow, fail open"]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../diagrams/02-authority-by-consequence.dark.svg">
+  <img alt="Authority by consequence: from observe to never-delegated, with registries read at runtime by a hook that blocks confirmed violations and fails open on ambiguity" src="../diagrams/02-authority-by-consequence.light.svg">
+</picture>
 
 ## What happened
 

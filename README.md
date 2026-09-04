@@ -12,23 +12,10 @@ Field evidence and executive lessons from five months operating a private AI-nat
 
 **What I learned.** AI-assisted development is not primarily a tooling change. It is an operating-model change. As implementation capacity stops being the constraint, the scarce resources become problem framing, context, decision rights, verification, and human attention. The system I built made me the bottleneck before it made me faster, and the controls I added to make it safe eventually became a bigger problem than the risks they addressed. Both of those failures are documented here on purpose.
 
-```mermaid
-flowchart LR
-  H["Human<br/>objectives, architecture,<br/>consequence boundaries, acceptance"] --> R
-  R["Charter and registries<br/>enforced by hooks"] --> Q["Task store<br/>leases, retries, receipts"]
-  Q --> V["Review kernel,<br/>health checks, alerts"]
-  V --> A1["Claude Code"]
-  V --> A2["Codex"]
-  V --> A3["OpenClaw"]
-  V --> A4["Hermes<br/>bounded worker"]
-  V --> A5["Local models"]
-  A1 --> E
-  A2 --> E
-  A3 --> E
-  A4 --> E
-  A5 --> E["Evidence<br/>tests, ledgers, verdicts,<br/>morning digest"]
-  E --> H
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="diagrams/00-operating-model-overview.dark.svg">
+  <img alt="Operating model: human sets objectives and boundaries; a deterministic control plane coordinates Claude Code, Codex, OpenClaw, Hermes, and local models; evidence flows back to the human" src="diagrams/00-operating-model-overview.light.svg">
+</picture>
 
 ## Three case studies
 

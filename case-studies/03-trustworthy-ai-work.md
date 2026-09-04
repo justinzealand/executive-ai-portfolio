@@ -18,16 +18,10 @@ A multi-model review system in which independent AI reviewers evaluate plans and
 
 Around it, observability for the whole environment: deterministic daily health checks, model-independent alerting, automated incident investigation with budgets, false-positive tracking, post-action verification, weekly graded operational retrospectives, and explicit acceptance criteria for important systems.
 
-```mermaid
-flowchart TB
-  J["Probabilistic<br/>judgment:<br/>Codex, OpenClaw,<br/>Claude Code"]
-  K["Deterministic<br/>control: review<br/>kernel, guardrails,<br/>event log"]
-  O["Deterministic<br/>control: health<br/>collector, pure-<br/>code alert sender"]
-  HU["Human<br/>accountability:<br/>objectives, risk,<br/>authorization"]
-  J --> K
-  K --> HU
-  O --> HU
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../diagrams/03-three-layer-trust-model.dark.svg">
+  <img alt="Three layers: probabilistic judgment, deterministic control, human accountability" src="../diagrams/03-three-layer-trust-model.light.svg">
+</picture>
 
 ## What happened
 
