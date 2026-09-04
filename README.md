@@ -6,7 +6,7 @@ Field evidence and executive lessons from five months operating a private AI-nat
 
 **Why.** Before leading an organization through AI adoption, I wanted first-hand evidence of what AI-native engineering actually changes: not what a coding assistant does for one developer, but what happens to architecture, review, governance, reliability, and human attention when AI agents perform most of the implementation.
 
-**What.** From March 2026 I designed and operated a private engineering environment in which Claude Code, Codex, OpenClaw, and local models did the implementation while I set objectives, architecture, constraints, and acceptance criteria. It ran continuously (96 consecutive days of health observations at the time of writing), grew to about 30 repositories, and was governed by a written charter enforced in code.
+**What.** From March 2026 I designed and operated a private engineering environment in which Claude Code, Codex, OpenClaw, Hermes, and local models performed implementation and delegated work while I set objectives, architecture, constraints, and acceptance criteria. It ran continuously, accumulated 96 consecutive days of health observations at the time of writing, and was governed by a written charter enforced in code.
 
 **What I learned.** AI-assisted development is not primarily a tooling change. It is an operating-model change. As implementation capacity stops being the constraint, the scarce resources become problem framing, context, decision rights, verification, and human attention. The system I built made me the bottleneck before it made me faster, and the controls I added to make it safe eventually became a bigger problem than the risks they addressed. Both of those failures are documented here on purpose.
 
@@ -18,11 +18,13 @@ flowchart LR
   V --> A1["Claude Code"]
   V --> A2["Codex"]
   V --> A3["OpenClaw"]
-  V --> A4["Local models"]
+  V --> A4["Hermes<br/>bounded worker"]
+  V --> A5["Local models"]
   A1 --> E
   A2 --> E
   A3 --> E
-  A4 --> E["Evidence<br/>tests, ledgers, verdicts,<br/>morning digest"]
+  A4 --> E
+  A5 --> E["Evidence<br/>tests, ledgers, verdicts,<br/>morning digest"]
   E --> H
 ```
 

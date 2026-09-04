@@ -5,9 +5,11 @@ flowchart LR
   V --> A1["Claude Code"]
   V --> A2["Codex"]
   V --> A3["OpenClaw"]
-  V --> A4["Local models"]
+  V --> A4["Hermes<br/>bounded worker"]
+  V --> A5["Local models"]
   A1 --> E
   A2 --> E
   A3 --> E
-  A4 --> E["Evidence<br/>tests, ledgers, verdicts,<br/>morning digest"]
+  A4 --> E
+  A5 --> E["Evidence<br/>tests, ledgers, verdicts,<br/>morning digest"]
   E --> H
