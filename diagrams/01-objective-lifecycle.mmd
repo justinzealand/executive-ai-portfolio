@@ -1,9 +1,9 @@
 flowchart TB
-  O["Objective and success criteria"] --> P["Plan<br/>inherits charter constraints"]
-  P --> RV["Independent model review<br/>deterministic kernel"]
-  RV -->|ship verdict| I["Implementation by a coding agent<br/>isolated worktree"]
-  I --> S["Ship<br/>PR and verification"]
-  S --> CL["Closeout<br/>decisions, learnings, open items<br/>to durable memory"]
+  O["Objective and<br/>success criteria"] --> P["Plan inherits<br/>charter constraints"]
+  P --> RV["Independent review<br/>deterministic kernel"]
+  RV -->|ship verdict| I["Coding agent<br/>implements in an<br/>isolated worktree"]
+  I --> S["Ship: PR and<br/>verification"]
+  S --> CL["Closeout to<br/>durable memory"]
   CL --> O
-  RV -->|needs operator| HD(("Human decision"))
+  RV -->|needs operator| HD(("Human<br/>decision"))
   HD --> P

@@ -20,10 +20,10 @@ Around it, observability for the whole environment: deterministic daily health c
 
 ```mermaid
 flowchart TB
-  J["Probabilistic judgment<br/>reviewers: Codex, OpenClaw<br/>implementer: Claude Code"]
-  K["Deterministic control<br/>review kernel: frozen packet,<br/>append-only log, state machine<br/>fact-check guardrails on reviewer claims"]
-  O["Deterministic control<br/>health collector to verdict<br/>alert sender in pure code, no model"]
-  HU["Human accountability<br/>objectives, risk tolerance,<br/>authorization at consequence"]
+  J["Probabilistic<br/>judgment:<br/>Codex, OpenClaw,<br/>Claude Code"]
+  K["Deterministic<br/>control: review<br/>kernel, guardrails,<br/>event log"]
+  O["Deterministic<br/>control: health<br/>collector, pure-<br/>code alert sender"]
+  HU["Human<br/>accountability:<br/>objectives, risk,<br/>authorization"]
   J --> K
   K --> HU
   O --> HU
