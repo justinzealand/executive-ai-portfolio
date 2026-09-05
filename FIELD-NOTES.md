@@ -1,6 +1,6 @@
 # Field notes
 
-Shorter lessons from operating the lab. Each was written down at the time as an operating rule with the incident that produced it; these are the ones that generalize beyond my environment. Dates are when the rule was recorded.
+Shorter lessons from operating the environment. Each was written down at the time as an operating rule with the incident that produced it; these are the ones that generalize beyond my environment. Dates are when the rule was recorded.
 
 **The operator becomes the message bus.** (2026-06) When several parallel sessions each narrate a workspace-wide condition that none of them owns, the human ends up routing 22 paragraphs of prose that collapse to 7 real conditions, one of which is 64% of the volume and needs nothing. Prose contracts do not bind. The fix was a queue that deposits, dedupes, self-heals, and digests, so the human sees each real condition once with its owner and next step.
 

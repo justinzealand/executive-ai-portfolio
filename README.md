@@ -1,12 +1,14 @@
 # Executive AI Portfolio
 
-Field evidence and executive lessons from five months operating a private AI-native engineering lab: agentic systems, governance as code, and what changes for technology leadership.
+Field evidence and executive lessons from five months operating a private AI-native engineering environment: agentic systems, governance as code, and what changes for technology leadership.
 
-**Who.** I am a technology executive with 20+ years leading product and engineering organizations, most recently as VP of Engineering for a technology company supporting a $300M+ recurring-revenue business. [LinkedIn](https://www.linkedin.com/in/justinzealand)
+**Who.** I am a technology executive with 20+ years leading product and engineering organizations, most recently as VP of Engineering for a technology company supporting a $300M+ recurring-revenue business. Before this work I led organizations of 100+ across startup, growth-stage, and Fortune 500 environments, managed multimillion-dollar technology budgets, and held engineering, product, and go-to-market responsibility. [LinkedIn](https://www.linkedin.com/in/justinzealand)
 
 **Why.** Reading about AI does not build intuition for how it behaves; operating it does. Before leading an organization through AI adoption, I wanted first-hand evidence of what AI-native engineering actually changes: not what a coding assistant does for one developer, but what happens to architecture, review, governance, reliability, and human attention when AI agents perform most of the implementation.
 
-**What.** From March 2026 I designed and operated a private multi-agent engineering environment in which Claude Code, Codex, OpenClaw, Hermes, and local models performed implementation and delegated work, coordinated through a deterministic control plane, while I acted as product owner and architect: setting objectives, constraints, and acceptance criteria. It ran continuously, accumulated 96 consecutive days of health observations at the time of writing, and was governed by a written charter enforced in code.
+**Why this matters to my work as an executive.** I built this environment to answer the questions I would need to answer before changing how a real engineering organization operates. What work should agents own? Where must humans retain authority? What happens when implementation capacity stops being the primary constraint? How should architecture, review, governance, management, and decision rights change? This repository documents the operating evidence; my professional record provides the organizational context.
+
+**What.** From March 2026 I designed and operated a private multi-agent engineering environment in which Claude Code, Codex, OpenClaw, Hermes, and local models performed implementation and delegated work, coordinated through a deterministic control plane, while I acted as product owner and architect: setting product objectives, architecture, constraints, priorities, and acceptance criteria. It ran continuously, accumulated 96 consecutive days of health observations at the time of writing, and was governed by a written charter enforced in code.
 
 **What it produced.** Working products, not demos: an AI chief-of-staff that assembles a daily command brief across mail, calendar, tasks, and system health; a delegated-work engine with Slack-based human approvals and durable run history; a self-healing observability plugin for the agent gateway with automated incident investigation; a guarded email-brief workflow with a send ledger; a local knowledge service with a wiki, an API, and a local-model retrieval evaluation; a multi-model decision-review pipeline; macOS integration servers for Apple and productivity apps; and a handful of personal-domain tools, from a local-first native iOS app to a snapshot-first finance analyzer with gated model use.
 
@@ -25,7 +27,7 @@ Field evidence and executive lessons from five months operating a private AI-nat
 
 ## Scope and limits
 
-This was a private, single-operator laboratory, not a customer-facing production environment. Implementation was intentionally delegated to AI coding agents so that I could test the operating model around them: objective definition, architecture, constraints, orchestration, review, measurement, governance, and intervention. The work produced operating evidence about engineering methods, reliability, governance, and human-agent coordination. It did not measure commercial impact, enterprise-scale adoption, or productivity gains, and none are claimed. Attribution rules, measurement method, and the full claim discipline are in [METHOD.md](METHOD.md).
+This was a private, single-operator laboratory, not a customer-facing production environment. Implementation was intentionally delegated to AI coding agents so that I could test the operating model around them: objective definition, architecture, constraints, orchestration, review, measurement, governance, and intervention. That delegation did not remove technical accountability: I remained responsible for architecture, requirements, acceptance criteria, investigation of failures, and deciding whether the resulting evidence was sufficient to change the system. The work produced operating evidence about engineering methods, reliability, governance, and human-agent coordination. It did not measure commercial impact, enterprise-scale adoption, or productivity gains, and none are claimed. Attribution rules, measurement method, and the full claim discipline are in [METHOD.md](METHOD.md).
 
 **Chronology.** 2025: structured study and evaluation of AI systems, economics, architecture, and leadership implications. From 2026-03-27: the sustained engineering operating record described here.
 
@@ -43,8 +45,18 @@ This was a private, single-operator laboratory, not a customer-facing production
 | [08 Operator attention](exhibits/08-operator-attention.md) | The study of 4,419 prompts / 240 reviewed samples that reframed the whole system |
 | [09 Agent boundaries](exhibits/09-agent-boundaries.md) | The always-on agent's standing safety boundaries |
 
+**If you have one more minute.** Read the [proportional-governance timeline](exhibits/02-proportional-governance/timeline.md) for one complete experiment, from control design through failure to measured correction. If you want proof this is not only prose, open the [governance-as-code exhibit](exhibits/04-governance-as-code/): five real runtime guards with their tests, which run in a few seconds.
+
 [Field notes](FIELD-NOTES.md) collects the shorter lessons that did not fit a case study.
+
+## What I would take into a larger organization
+
+I would not transplant this environment into an enterprise. What transfers is the set of operating principles the evidence exposed: allocate autonomy by consequence; make decision rights explicit; enforce the critical boundaries deterministically; measure human coordination as well as machine throughput; separate detection from remediation; and treat governance itself as a system whose cost and failure modes must be measured.
+
+The next question is organizational rather than technical: how those principles change team structure, engineering management, architecture, talent, and delivery when applied across a real engineering organization. That is the work I want to do next.
+
+I am interested in technology leadership roles where AI is changing how engineering organizations operate. Professional background and contact: [LinkedIn](https://www.linkedin.com/in/justinzealand).
 
 ## How this was made
 
-The lab, and this repository, were produced through human-directed agentic workflows. The interesting question is how the work was specified, constrained, reviewed, measured, and corrected. Precise attribution is in [METHOD.md](METHOD.md).
+The environment, and this repository, were produced through human-directed agentic workflows. The interesting question is how the work was specified, constrained, reviewed, measured, and corrected. Precise attribution is in [METHOD.md](METHOD.md).

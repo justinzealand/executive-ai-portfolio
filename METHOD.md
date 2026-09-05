@@ -4,7 +4,7 @@ This document is the rigor behind the README. It says how the work was done, how
 
 ## 1. How the work was done
 
-The lab followed one lifecycle for anything non-trivial: a written **charter** (the immovable layer: problem, success signals, principles in priority order, hard constraints, tripwires) → a **plan** that inherits the charter's constraints and states goals, acceptance criteria, and non-goals → **review** by independent model reviewers under a deterministic kernel → **implementation** by a coding agent in an isolated worktree → **ship** through a pull request with verification → **closeout** that records decisions, learnings, and open items. Exhibit 01 shows the charter and the operating contract; Exhibit 02 shows how the review step was tuned, over-tuned, and corrected.
+The environment followed one lifecycle for anything non-trivial: a written **charter** (the immovable layer: problem, success signals, principles in priority order, hard constraints, tripwires) → a **plan** that inherits the charter's constraints and states goals, acceptance criteria, and non-goals → **review** by independent model reviewers under a deterministic kernel → **implementation** by a coding agent in an isolated worktree → **ship** through a pull request with verification → **closeout** that records decisions, learnings, and open items. Exhibit 01 shows the charter and the operating contract; Exhibit 02 shows how the review step was tuned, over-tuned, and corrected.
 
 My role throughout: set the problem and the outcome; choose architecture and decision rights; write or approve the constraints; adjudicate the reviews; decide what may run unattended; read the evidence; change the system when the evidence said so. I did not write implementation code, and the environment was designed so that its operation does not depend on my doing so.
 
@@ -19,9 +19,9 @@ Tools: Claude Code and Codex as engineering agents; OpenClaw as the always-on co
 
 ## 3. Evidence taxonomy
 
-Three kinds of experience are kept separate: **led in an organization** (my prior executive roles; not the subject of this repository), **built, configured, and operated personally** (this lab), and **studied or evaluated** (2025 and ongoing reading, courses, and tool evaluations; supports informed opinion, not operating claims).
+Three kinds of experience are kept separate: **led in an organization** (my prior executive roles; not the subject of this repository), **built, configured, and operated personally** (this environment), and **studied or evaluated** (2025 and ongoing reading, courses, and tool evaluations; supports informed opinion, not operating claims).
 
-Maturity labels used for lab systems, from strongest to weakest: production-like (private) → repeatedly used workflow → working internal system → prototype → experiment. "Production-like (private)" means persistently running or scheduled, recurrently used, with live or terminal evidence, but single-user and without enterprise operating commitments.
+Maturity labels used for the environment's systems, from strongest to weakest: production-like (private) → repeatedly used workflow → working internal system → prototype → experiment. "Production-like (private)" means persistently running or scheduled, recurrently used, with live or terminal evidence, but single-user and without enterprise operating commitments.
 
 ## 4. Measurement method and how to read each number
 
@@ -29,7 +29,7 @@ Every metric in the README or a case study has a source that can be regenerated 
 
 | Metric | Source | What it supports | What it does not support |
 |---|---|---|---|
-| ~5-month window (2026-03-27 →) | earliest attributable session and first commit in the lab repositories | sustained operation | outcomes or scale; it is a duration, not a result |
+| ~5-month window (2026-03-27 →) | earliest attributable session and first commit in the environment's repositories | sustained operation | outcomes or scale; it is a duration, not a result |
 | 96 consecutive days of health observations | one dated JSON per day from the deterministic health collector, no gaps | continuity of operation | that the platform was healthy (the verdict was red on most of those days) |
 | Review kernel: 329 attempts, 323 content verdicts (98.2%), 6 harness faults (1.8%), p50 54s, p95 121s | the kernel's own packet ledger, regenerated 2026-09-04 (Exhibit 03) | reliability of the review harness against targets I froze in advance | quality of the reviewed plans; enterprise service levels |
 | 4,419 operator prompts / 240 manually reviewed samples over 30 days | a reproducible prompt-log analysis with a documented correction (Exhibit 08) | the size and shape of the human coordination burden | productivity improvement; anything about other operators |
@@ -41,7 +41,7 @@ Activity counts (commits, pull requests, tests, memory files, lines of code) exi
 - Personal authorship of the implementation code. It was written by AI coding agents under my direction, not by me and not by another developer.
 - Model training, fine-tuning, or machine-learning research.
 - Enterprise-scale, multi-tenant, customer-facing, or commercial production.
-- Quantified productivity, quality, revenue, or cost improvement from the lab.
+- Quantified productivity, quality, revenue, or cost improvement from this environment.
 - Unconstrained autonomy. The architecture uses approval, no-send, local-only, and fail-closed boundaries on purpose.
 - That the platform is uniformly healthy or self-healing. Its own health verdict was red on most recorded days, some remediation automation became a source of failures, and the verdict itself was sometimes wrong in both directions: false reds from stale proxies and at least one false green from a model summarizing a non-green report. Making the signal trustworthy was its own line of work.
 - That agents "freely collaborated." The fabric is orchestrated consultation with one retained owner.

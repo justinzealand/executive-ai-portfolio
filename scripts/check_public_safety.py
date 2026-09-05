@@ -27,7 +27,7 @@ PATTERNS = {
     "secret-like": re.compile(r"xox[abp]-|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}"),
 }
 SKIP_DIRS = {".git", "__pycache__", ".pytest_cache"}
-ALLOW_FILES = {"scripts/check_public_safety.py", "SAFETY-INVENTORY.md"}  # inventory is private staging, removed before publication
+ALLOW_FILES = {"scripts/check_public_safety.py"}
 # Literals reviewed by hand and accepted (public URL; test fixture with no real path).
 ALLOWED_LITERALS = ("linkedin.com/in/justinzealand", "github.com/justinzealand/executive-ai-portfolio", '"mv ~/foo.plist ~/tmp/"')
 

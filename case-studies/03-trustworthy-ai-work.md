@@ -33,7 +33,7 @@ Those figures describe a private experimental environment, not enterprise servic
 
 ## What failed
 
-The monitoring environment produced the more useful lesson. It was very good at detecting problems and much worse at remediating them. For most of the measured period the platform's own health verdict was red, and the verdict itself was suspect: some reds were false positives from checks that graded a stale proxy instead of the live system, and at least one green was a false negative produced by a model summarizing the report. Some automated repair processes became sources of failure themselves. **Observability is not control.** Detection without effective remediation is a more sophisticated way of overwhelming the human operator.
+The monitoring environment produced the more useful lesson. It was very good at detecting problems and much worse at remediating them. For much of the measured period the platform reported its own health as red, but investigation showed that the health signal itself was not consistently trustworthy: some reds were false positives from checks that graded a stale proxy instead of the live system, and at least one green was a false negative produced by a model summarizing the report. Some automated repair processes became sources of failure themselves. **Observability is not control.** Detection without effective remediation is a more sophisticated way of overwhelming the human operator.
 
 Two specific failures shaped the design:
 
