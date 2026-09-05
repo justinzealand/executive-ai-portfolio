@@ -31,6 +31,21 @@ ALLOW_FILES = {"scripts/check_public_safety.py"}
 # Literals reviewed by hand and accepted (public URL; test fixture with no real path).
 ALLOWED_LITERALS = ("linkedin.com/in/justinzealand", "github.com/justinzealand/executive-ai-portfolio", '"mv ~/foo.plist ~/tmp/"')
 
+
+def allowed_match(line: str, match: re.Match[str]) -> bool:
+    """Allow only the reviewed literal itself, never unrelated text on its line."""
+    return any(
+        start <= match.start() and match.end() <= start + len(literal)
+        for literal in ALLOWED_LITERALS
+        for start in (line.find(literal),)
+        if start >= 0
+    )
+
+
+def svg_css_selector(line: str) -> bool:
+    """Avoid treating an SVG CSS selector as a Slack channel name."""
+    return bool(re.search(r"(?:^|[;{}\s])[#.][a-z][a-z0-9_-]*\s*(?:[,{])", line, re.I))
+
 def main() -> int:
     root = pathlib.Path(__file__).resolve().parent.parent
     hits = 0
@@ -43,17 +58,18 @@ def main() -> int:
         try:
             text = f.read_text(encoding="utf-8")
         except UnicodeDecodeError:
+            hits += 1
+            print(f"{rel}: [non-utf-8] file was not scanned")
             continue
         for n, line in enumerate(text.splitlines(), 1):
-            if any(lit in line for lit in ALLOWED_LITERALS):
-                continue
             for name, rx in PATTERNS.items():
-                if name == "slack channel name" and f.suffix == ".svg":
+                if name == "slack channel name" and f.suffix == ".svg" and svg_css_selector(line):
                     continue  # CSS id selectors (#my-svg) are not channel names
-                m = rx.search(line)
-                if m:
+                for m in rx.finditer(line):
+                    if allowed_match(line, m):
+                        continue
                     hits += 1
-                    print(f"{rel}:{n}: [{name}] {line.strip()[:140]}")
+                    print(f"{rel}:{n}: [{name}] {m.group(0)!r}")
     print(f"\n{hits} finding(s)" if hits else "clean: 0 findings")
     return 1 if hits else 0
 
