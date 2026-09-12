@@ -108,6 +108,25 @@ def main() -> int:
             if target is not None and not target.is_file():
                 errors.append(f"{relative}: broken {attribute}={reference!r}")
 
+    homepage = (DIST / "index.html").read_text(encoding="utf-8")
+    if '>View résumé</a>' not in homepage or '>Download résumé</a>' in homepage:
+        errors.append("index.html: résumé page link must be labeled 'View résumé'")
+
+    case_index = (DIST / "case-studies/index.html").read_text(encoding="utf-8")
+    expected_case_labels = {
+        "Read case study: Designing an AI-native engineering operating model",
+        "Read case study: Governing autonomous work without eliminating autonomy",
+        "Read case study: Making AI-generated work trustworthy",
+    }
+    for label in expected_case_labels:
+        if f'aria-label="{label}"' not in case_index:
+            errors.append(f"case-studies/index.html: missing unique link label {label!r}")
+
+    operating_model = (DIST / "case-studies/operating-model/index.html").read_text(encoding="utf-8")
+    for evidence_label in ("Laboratory period", "Measured study", "30 days; 4,419 prompts"):
+        if evidence_label not in operating_model:
+            errors.append(f"case-studies/operating-model/index.html: missing evidence wording {evidence_label!r}")
+
     if errors:
         print("\n".join(errors))
         return 1
