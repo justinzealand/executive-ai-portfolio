@@ -54,3 +54,16 @@ def test_svg_css_selector_does_not_hide_a_channel_name(tmp_path: pathlib.Path) -
 
     assert result.returncode == 1
     assert "[slack channel name] '" + "#" "ops-alerts'" in result.stdout
+
+
+def test_public_site_literals_and_css_colors_are_allowed(tmp_path: pathlib.Path) -> None:
+    (tmp_path / "index.html").write_text(
+        '<a href="' + "#" + 'main">Skip</a><a href="mailto:zealandtech@gmail.com">zealandtech@gmail.com</a>\n',
+        encoding="utf-8",
+    )
+    (tmp_path / "site.css").write_text(":root { --ink: " + "#" + "f3f6f7; }\n", encoding="utf-8")
+
+    result = run_scan(tmp_path)
+
+    assert result.returncode == 0
+    assert "clean: 0 findings" in result.stdout

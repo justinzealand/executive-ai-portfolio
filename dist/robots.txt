@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://justinzealand.github.io/executive-ai-portfolio/sitemap.xml

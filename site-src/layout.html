@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+  <title>{{TITLE}}</title>
+  <link rel="icon" href="{{ROOT}}assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ROOT}}assets/site.css">
+  <script src="{{ROOT}}assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="{{ROOT}}index.html" aria-label="Justin Zealand home">
+      <span class="wordmark-mark" aria-hidden="true">JZ</span>
+      <span>Justin Zealand</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+      <span>Menu</span>
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation">
+      <a href="{{ROOT}}index.html"{{NAV_OVERVIEW}}>Overview</a>
+      <a href="{{ROOT}}experience/"{{NAV_EXPERIENCE}}>Experience</a>
+      <a href="{{ROOT}}case-studies/"{{NAV_CASE_STUDIES}}>Case Studies</a>
+      <a href="{{ROOT}}leadership/"{{NAV_LEADERSHIP}}>Leadership</a>
+      <a href="{{ROOT}}resume/"{{NAV_RESUME}}>Résumé</a>
+      <a class="nav-contact" href="{{ROOT}}contact/"{{NAV_CONTACT}}>Contact</a>
+    </nav>
+  </header>
+  <main id="main">
+{{BODY}}
+  </main>
+  <footer class="site-footer">
+    <div>
+      <p class="footer-name">Justin Zealand</p>
+      <p>Technology leadership, product and engineering transformation, and practical AI adoption.</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/justinzealand/executive-ai-portfolio">GitHub evidence repository</a>
+      <a href="https://www.linkedin.com/in/justinzealand">LinkedIn</a>
+      <a href="mailto:zealandtech@gmail.com">Email</a>
+    </div>
+    <p class="footer-note">Evidence is specific, measured, and qualified. Private laboratory work is not presented as enterprise deployment.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+  <article class="case-detail">
+    <header class="case-hero section-shell">
+      <a class="back-link" href="{{ROOT}}case-studies/">← All case studies</a>
+      <p class="eyebrow">Case study 02 <span aria-hidden="true">•</span> Governance</p>
+      <h1>Governing autonomous work without eliminating autonomy</h1>
+      <p class="case-thesis">Autonomy should be proportional to consequence and reversibility. The controls themselves must also earn their cost.</p>
+    </header>
+    <div class="case-body section-shell">
+      <aside class="case-facts" aria-label="Case study summary">
+        <p><span>Question</span>How much authority should an AI agent have?</p>
+        <p><span>Failure</span>Controls became a larger burden than some risks</p>
+        <p><span>Correction</span>Proportional authority and review</p>
+        <p><span>Boundary</span>People retain high-consequence decisions</p>
+      </aside>
+      <div class="case-narrative">
+        <section><p class="record-kicker">Executive question</p><h2>How much authority should an AI agent actually have?</h2><p>An agent that can only recommend creates limited leverage. An agent with unrestricted authority creates unacceptable risk. The useful territory between those extremes must be designed and measured.</p></section>
+        <section><p class="record-kicker">Hypothesis</p><h2>Decision rights should follow consequence, not a simple on-or-off autonomy setting.</h2><p>Conventional software should define what can proceed, what requires approval, and what should never be delegated. The human governs those boundaries rather than executing every routine step.</p></section>
+        <figure class="case-diagram"><picture><source media="(prefers-color-scheme: dark)" srcset="{{ROOT}}assets/diagrams/02-authority-by-consequence.dark.svg"><img src="{{ROOT}}assets/diagrams/02-authority-by-consequence.light.svg" alt="Authority increasing from observation to recommendation and bounded action, with human approval at higher consequences"></picture><figcaption>Authority increases only when consequences remain understood and controlled.</figcaption></figure>
+        <section><p class="record-kicker">What I designed</p><h2>A written charter, enforceable controls, human approval boundaries, and graduated unattended work.</h2><ul class="evidence-list"><li>A versioned charter defining constraints, privacy boundaries, and the situations requiring a person.</li><li>Permission and inventory rules enforced by software rather than memory.</li><li>Persistent delegated work with ownership, retries, durable state, and explicit outcomes.</li><li>Advisory-first controls that earn blocking authority only after measured accuracy.</li></ul></section>
+        <section><p class="record-kicker">What failed</p><h2>The controls outgrew the operator—and I then removed them too abruptly.</h2><p>A review system initially applied to nearly everything. The unreviewed plan queue grew from 2 to 29 in twelve days because plans arrived at about 4.3 per day while reviews completed at about 2.5. The warnings became noise.</p><p>Under that pressure, I removed the review requirement. Four days after the removal was formalized, a redesigned system passed the acceptance targets that had been set in advance. I had discarded a useful control because its predecessor had exhausted the operator.</p></section>
+        <section><p class="record-kicker">What changed</p><h2>Review and autonomy became proportional.</h2><p>Local, reversible work no longer carried the full review burden. Significant and consequential work did. The system also began checking governance changes against written goals so that introducing or retiring a control required evidence in both directions.</p></section>
+        <section><p class="record-kicker">Enterprise implication</p><h2>AI governance needs an authority architecture, not only a policy.</h2><p>Organizations need clear rules for what AI may observe, recommend, and change; what evidence completion requires; when approval is mandatory; and how autonomy is revoked. The companies that learn where autonomy creates leverage—and where controls create their own cost—will be better positioned than those maximizing either one.</p></section>
+        <section class="evidence-note"><p class="record-kicker">Evidence and limits</p><p>The <a href="https://github.com/justinzealand/executive-ai-portfolio">GitHub repository</a> contains the dated decision timeline, policy, governance code, tests, and explicit limitations. These are operating lessons from a private environment, not proof of an enterprise governance program.</p></section>
+      </div>
+    </div>
+  </article>
