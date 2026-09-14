@@ -127,6 +127,19 @@ def main() -> int:
         if evidence_label not in operating_model:
             errors.append(f"case-studies/operating-model/index.html: missing evidence wording {evidence_label!r}")
 
+    resume = (DIST / "resume/index.html").read_text(encoding="utf-8")
+    for resume_label in (
+        "Selected leadership record",
+        "PrePass · 2023–2025",
+        "Uproad · 2018–2023",
+        "AI practice · 2026",
+        "Email Justin",
+        "Download full résumé",
+        "Open GitHub evidence",
+    ):
+        if resume_label not in resume:
+            errors.append(f"resume/index.html: missing mobile screening content {resume_label!r}")
+
     if errors:
         print("\n".join(errors))
         return 1
