@@ -7,7 +7,10 @@ channel ids, personal contacts, credential-store references, or personal-domain
 product names. Run from the repository root: python3 scripts/check_public_safety.py
 """
 from __future__ import annotations
-import re, sys, pathlib
+
+import pathlib
+import re
+import sys
 
 PATTERNS = {
     # Absolute, user-identifying paths. Tilde paths under standard tool/config dirs
@@ -22,7 +25,7 @@ PATTERNS = {
     "phone": re.compile(r"\(?\b\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b"),
     "notion / artifact url": re.compile(r"notion\.(so|com)/\S|app\.notion|claude\.ai/code", re.I),
     "credential store": re.compile(r"1password|keychain|find-generic-password|oauth[-_ ]token", re.I),
-    "personal domain": re.compile(r"wolf ?trap|vividseats|quicken|fcps|single father|telegram chat id|justinzealand|zealandtech", re.I),
+    "personal domain": re.compile(r"wolf ?trap|vividseats|quicken|fcps|single father|telegram chat id|ticket-price-tracker|justinzealand|zealandtech", re.I),
     "session id": re.compile(r"\b(?!abc12345-)[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b"),
     "secret-like": re.compile(r"xox[abp]-|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}"),
 }

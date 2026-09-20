@@ -462,7 +462,7 @@ def is_bash_write(command: str) -> bool:
     if verb in ("curl", "wget"):
         return _has_curl_wget_write_flag(argv[1:])
     if verb == "gh":
-        return _has_gh_write_shape(argv[1:])
+        return _gh_mutating_command_target(command)[0]
     if verb == "http":
         # HTTPie: `http POST <url>` / `http PUT <url> field=value`
         for tok in argv[1:]:
@@ -482,32 +482,66 @@ def _basename(p: str) -> str:
     return p.rsplit("/", 1)[-1]
 
 
-def _is_gh_mutating_command(command: str) -> bool:
-    """True iff ``command`` is a `gh` invocation matching a mutating shape.
+def _gh_mutating_command_target(command: str) -> tuple[bool, str | None]:
+    """Return whether a `gh` command writes and any explicit target host.
 
-    The `gh` CLI writes only to the configured GitHub host (github.com by
-    default; already in ALLOWLIST as the `github` service). Any URL literal
-    inside a `--body`, `--field`, or heredoc is CONTENT, not a target host —
-    so the first-URL-host extractor mis-attributes it. This predicate lets
-    ``_evaluate_bash_inner`` short-circuit gh writes to allow, keyed on
-    api.github.com. Fail-safe: any tokenization error returns False, letting
-    the caller fall through to the (correct) generic path.
+    Normal `gh` writes use the configured GitHub host, so URLs in their body
+    text must not be classified as destinations. Explicit ``GH_HOST``,
+    ``--hostname``, and fully-qualified ``--repo``/``-R`` options change that
+    assumption and must go through the allowlist like every other write.
     """
     try:
         tokens = shlex.split(command, posix=True, comments=False)
     except Exception:
-        return False
+        return False, None
     if not tokens:
-        return False
+        return False, None
     i = 0
+    host: str | None = None
     while i < len(tokens) and re.match(r"^[A-Za-z_][A-Za-z0-9_]*=", tokens[i]):
+        name, value = tokens[i].split("=", 1)
+        if name == "GH_HOST" and value:
+            host = value.lower()
         i += 1
     if i >= len(tokens):
-        return False
+        return False, None
     argv = tokens[i:]
     if _basename(argv[0]) != "gh":
-        return False
-    return _has_gh_write_shape(argv[1:])
+        return False, None
+
+    filtered: list[str] = []
+    args = argv[1:]
+    i = 0
+    while i < len(args):
+        token = args[i]
+        if token == "--hostname" and i + 1 < len(args):
+            host = args[i + 1].lower()
+            i += 2
+            continue
+        if token.startswith("--hostname="):
+            host = token.split("=", 1)[1].lower()
+            i += 1
+            continue
+        if token in ("--repo", "-R") and i + 1 < len(args):
+            repo = args[i + 1]
+            if repo.count("/") >= 2:
+                host = repo.split("/", 1)[0].lower()
+            i += 2
+            continue
+        if token.startswith("--repo="):
+            repo = token.split("=", 1)[1]
+            if repo.count("/") >= 2:
+                host = repo.split("/", 1)[0].lower()
+            i += 1
+            continue
+        filtered.append(token)
+        i += 1
+    return _has_gh_write_shape(filtered), host
+
+
+def _is_gh_mutating_command(command: str) -> bool:
+    """True iff ``command`` is a `gh` invocation matching a mutating shape."""
+    return _gh_mutating_command_target(command)[0]
 
 
 def _has_curl_wget_write_flag(args: Iterable[str]) -> bool:
@@ -620,16 +654,21 @@ def extract_first_url_host_port(command: str) -> tuple[str, int | None] | None:
     Port is None when the URL uses the default port for its scheme; otherwise
     the explicit port. Returns None when no URL literal is present.
     """
-    m = _URL_RE.search(command)
-    if not m:
-        return None
-    try:
-        parsed = urlparse(m.group(1))
-    except Exception:
-        return None
-    if not parsed.hostname:
-        return None
-    return (parsed.hostname.lower(), parsed.port)
+    hosts = extract_url_host_ports(command)
+    return hosts[0] if hosts else None
+
+
+def extract_url_host_ports(command: str) -> list[tuple[str, int | None]]:
+    """Return every literal http(s) destination host and port in ``command``."""
+    hosts: list[tuple[str, int | None]] = []
+    for match in _URL_RE.finditer(command):
+        try:
+            parsed = urlparse(match.group(1))
+            if parsed.hostname:
+                hosts.append((parsed.hostname.lower(), parsed.port))
+        except ValueError:
+            continue
+    return hosts
 
 
 _SHELL_VAR_URL_RE = re.compile(
@@ -1252,12 +1291,11 @@ def _evaluate_bash_inner(
     if not is_bash_write(command):
         return EvalResult(outcome="allow", tool="Bash")
 
-    # `gh` mutating subcommands only ever target the configured GitHub host
-    # (github.com; api.github.com is already an ALLOWLIST-covered service).
-    # A URL literal inside a `--body`/`--field`/heredoc is CONTENT, not a
-    # target host, so the generic URL-host extractor would mis-attribute it
-    # and false-block. Short-circuit before URL extraction runs.
-    if _is_gh_mutating_command(command):
+    # A normal `gh` write targets configured GitHub, so URLs in its body text
+    # are content rather than destinations. Explicit host/repository overrides
+    # instead become a real destination and must be allowlisted below.
+    gh_mutating, gh_host = _gh_mutating_command_target(command)
+    if gh_mutating and gh_host is None:
         return EvalResult(outcome="allow", host_or_label="api.github.com", tool="Bash")
 
     # Check for a bypass token BEFORE registry lookup — the bypass short-
@@ -1272,15 +1310,11 @@ def _evaluate_bash_inner(
             bypass_reason=bypass,
         )
 
-    host_port = extract_first_url_host_port(command)
-    if host_port is None:
+    host_ports = [(gh_host, None)] if gh_mutating else extract_url_host_ports(command)
+    if not host_ports:
         # No URL literal — nothing to look up. Common for `gh pr create` etc.
         # which uses the local repo's origin. Allow.
         return EvalResult(outcome="allow", tool="Bash", bypass_reason=bypass)
-    host, port = host_port
-
-    if _is_localhost_or_tailnet(host, port):
-        return EvalResult(outcome="allow_localhost", host_or_label=host, tool="Bash")
 
     al = allowlist if allowlist is not None else load_allowlist()
     if al.parse_error:
@@ -1290,25 +1324,31 @@ def _evaluate_bash_inner(
             tool="Bash",
         )
 
-    if _host_in_allowlist(host, al):
-        return EvalResult(outcome="allow", host_or_label=host, tool="Bash")
-
-    if bypass is not None:
+    for host, port in host_ports:
+        if _is_localhost_or_tailnet(host, port):
+            continue
+        if _host_in_allowlist(host, al):
+            continue
+        if bypass is not None:
+            return EvalResult(
+                outcome="allow_bypassed",
+                registry="allowlist",
+                host_or_label=host,
+                bypass_reason=bypass,
+                tool="Bash",
+            )
         return EvalResult(
-            outcome="allow_bypassed",
+            outcome="block",
             registry="allowlist",
             host_or_label=host,
-            bypass_reason=bypass,
+            row_template=_render_allowlist_template(host),
+            bypass_hint=_bypass_hint_bash(),
             tool="Bash",
         )
-    return EvalResult(
-        outcome="block",
-        registry="allowlist",
-        host_or_label=host,
-        row_template=_render_allowlist_template(host),
-        bypass_hint=_bypass_hint_bash(),
-        tool="Bash",
-    )
+
+    first_host, first_port = host_ports[0]
+    outcome = "allow_localhost" if _is_localhost_or_tailnet(first_host, first_port) else "allow"
+    return EvalResult(outcome=outcome, host_or_label=first_host, tool="Bash")
 
 
 def _host_in_allowlist(host: str, al: AllowlistSnapshot) -> bool:

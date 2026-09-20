@@ -54,3 +54,13 @@ def test_svg_css_selector_does_not_hide_a_channel_name(tmp_path: pathlib.Path) -
 
     assert result.returncode == 1
     assert "[slack channel name] '" + "#" "ops-alerts'" in result.stdout
+
+
+def test_ticket_price_tracker_slug_is_detected(tmp_path: pathlib.Path) -> None:
+    slug = "ticket-price" "-tracker"
+    (tmp_path / "sample.md").write_text(f"{slug}\n", encoding="utf-8")
+
+    result = run_scan(tmp_path)
+
+    assert result.returncode == 1
+    assert "[personal domain] 'ticket-price" "-tracker'" in result.stdout
