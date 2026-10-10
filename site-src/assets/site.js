@@ -1,6 +1,6 @@
 const toggle = document.querySelector('.nav-toggle');
 const navigation = document.querySelector('.primary-nav');
-const header = document.querySelector('.site-header');
+const header = document.querySelector('.header-inner');
 const wordmark = document.querySelector('.wordmark');
 
 if (toggle && navigation && header && wordmark) {
