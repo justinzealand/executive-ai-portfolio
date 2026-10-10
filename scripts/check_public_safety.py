@@ -31,9 +31,15 @@ ALLOW_FILES = {
     "scripts/check_public_safety.py",
     "scripts/check_site.py",
     "site-src/assets/headshot.jpeg",
+    "site-src/assets/headshot-justin-zealand.jpg",
     "site-src/assets/justin-zealand-resume.pdf",
+    "site-src/assets/zealand-technology-logo.png",
+    "site-src/assets/zealand-technology-text.png",
     "dist/assets/headshot.jpeg",
+    "dist/assets/headshot-justin-zealand.jpg",
     "dist/assets/justin-zealand-resume.pdf",
+    "dist/assets/zealand-technology-logo.png",
+    "dist/assets/zealand-technology-text.png",
 }
 # Literals reviewed by hand and accepted (public URL; test fixture with no real path).
 ALLOWED_LITERALS = (

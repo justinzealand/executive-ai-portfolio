@@ -72,7 +72,14 @@ def main() -> int:
     if actual_pages != EXPECTED_PAGES:
         errors.append(f"unexpected page set: {sorted(actual_pages ^ EXPECTED_PAGES)}")
 
-    for required in ("assets/headshot.jpeg", "assets/justin-zealand-resume.pdf", "assets/site.css", "assets/site.js"):
+    for required in (
+        "assets/headshot-justin-zealand.jpg",
+        "assets/zealand-technology-logo.png",
+        "assets/zealand-technology-text.png",
+        "assets/justin-zealand-resume.pdf",
+        "assets/site.css",
+        "assets/site.js",
+    ):
         if not (DIST / required).is_file():
             errors.append(f"missing required asset: {required}")
     for required in ("sitemap.xml", "robots.txt"):
