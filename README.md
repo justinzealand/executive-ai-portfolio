@@ -2,13 +2,7 @@
 
 Field evidence and executive lessons from six months operating a private AI-native engineering environment: agentic systems, governance as code, and what changes for technology leadership.
 
-The companion website is live at <https://portfolio.zealand.technology/> as a
-separate Cloudflare Pages project in the same account as
-<https://zealand.technology/>. The company mark links to the corporate site;
-the “Executive portfolio” label and primary navigation remain within this site.
-This repository remains the primary public evidence source behind the portfolio.
-
-**Who.** I am a technology executive with 20+ years leading product and engineering organizations, most recently as VP of Engineering for a technology company supporting a $300M+ recurring-revenue business. Before this work I led organizations of 100+ across startup, growth-stage, and Fortune 500 environments, managed multimillion-dollar technology budgets, and held engineering, product, and go-to-market responsibility. [LinkedIn](https://www.linkedin.com/in/justinzealand)
+**Who.** I am a technology executive with 20+ years leading product and engineering organizations, most recently as VP of Engineering for a technology company supporting a $300M+ recurring-revenue business. Before this work I led organizations of 100+ across startup, growth-stage, and Fortune 500 environments, managed multimillion-dollar technology budgets, and held engineering, product, and go-to-market responsibility. [zealand.technology](https://zealand.technology)
 
 **Why.** During a period of recovery from shoulder surgery, I had an unusual opportunity to step away from day-to-day operating responsibilities and go deep on a question I believed would reshape engineering leadership: what changes when AI agents become part of the software delivery system? Reading about AI does not build intuition for how it behaves; operating it does. Before leading an organization through AI adoption, I wanted firsthand evidence of how agentic engineering affects architecture, review, governance, reliability, and human attention, not merely how a coding assistant affects one developer.
 
@@ -61,7 +55,7 @@ I would not transplant this environment into an enterprise. What transfers is th
 
 The next question is organizational rather than technical: how those principles change team structure, engineering management, architecture, talent, and delivery when applied across a real engineering organization. That is the work I want to do next.
 
-I am interested in technology leadership roles where AI is changing how engineering organizations operate. Professional background and contact: [LinkedIn](https://www.linkedin.com/in/justinzealand).
+I am interested in technology leadership roles where AI is changing how engineering organizations operate. Professional background and contact: [zealand.technology](https://zealand.technology).
 
 ## How this was made
 
