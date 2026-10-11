@@ -507,6 +507,7 @@ h3 {
 .featured-cases { padding-bottom: var(--section-space-tight); }
 .featured-cases + .closing-cta { padding-top: .75rem; }
 .closing-cta h2 { max-width: 15ch; margin-inline: auto; }
+.closing-cta .experience-close-title { max-width: 20ch; }
 .closing-cta > p:not(.eyebrow) { max-width: 60ch; margin: 1.2rem auto 0; color: var(--body); }
 .closing-cta .hero-actions { justify-content: center; }
 
@@ -645,7 +646,7 @@ h3 {
 
 .leadership-grid article > span { color: var(--accent); font-weight: 700; }
 .leadership-grid p { color: var(--body); }
-.point-of-view, .about-section, .resume-summary {
+.point-of-view, .resume-summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
   gap: clamp(3rem, 9vw, 9rem);
@@ -656,9 +657,25 @@ h3 {
 .pov-intro p:last-child, .pov-principles p, .about-section p:not(.eyebrow) { color: var(--body); }
 .pov-principles article { padding: 1.5rem 0; border-bottom: 1px solid var(--rule); }
 .pov-principles article:first-child { padding-top: 0; }
-.about-section { align-items: center; }
-.about-image { width: min(100%, 220px); justify-self: end; }
-.about-image img { display: block; width: 100%; height: auto; }
+.about-section {
+  display: grid;
+  grid-template-columns: minmax(260px, .72fr) minmax(0, 1.28fr);
+  align-items: start;
+  gap: clamp(3rem, 7vw, 7rem);
+  padding-block: var(--section-space);
+  border-top: 1px solid var(--rule);
+}
+.about-copy { grid-column: 2; max-width: 680px; }
+.about-copy h2 { max-width: 16ch; }
+.about-copy .text-link { margin-top: .45rem; }
+.about-image {
+  grid-column: 1;
+  grid-row: 1;
+  width: min(100%, 320px);
+  margin: 0;
+  justify-self: end;
+}
+.about-image img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
 
 .resume-summary h2 { max-width: 15ch; }
 .resume-facts { border-top: 1px solid var(--rule); }
@@ -748,6 +765,8 @@ h3 {
 @media (max-width: 900px) {
   .hero-content { grid-template-columns: 1fr; }
   .hero-portrait { width: 190px; margin-top: 2rem; justify-self: end; }
+  .about-section { grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr); gap: 2.5rem; }
+  .about-image { width: min(100%, 260px); }
 }
 
 @media (max-width: 760px) {
@@ -760,7 +779,8 @@ h3 {
   .evidence-pair article, .evidence-pair article:first-child, .evidence-pair article:last-child { padding-inline: max(var(--gutter), calc((100vw - var(--max)) / 2)); }
   .record-grid, .fit-grid, .early-evidence, .leadership-grid, .about-section,
   .resume-expertise ul, .resume-record-grid { grid-template-columns: 1fr; }
-  .about-image { justify-self: end; width: 180px; }
+  .about-copy { grid-column: 1; grid-row: 1; }
+  .about-image { grid-column: 1; grid-row: 2; justify-self: end; width: 210px; }
   .timeline-item, .case-body { grid-template-columns: 1fr; }
   .case-facts { position: static; }
   .case-index article { grid-template-columns: 2rem 1fr; }
