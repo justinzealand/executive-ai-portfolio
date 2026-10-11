@@ -14,7 +14,7 @@ schema 1.8 · generated 2026-08-29T08:50:01.042493+00:00 · 7d · America/New_Yo
 - Measures repository-evidenced remediation only; restarts, hosted-setting changes, token rotation, manual data fixes, and uncommitted local patches may be undercounted unless captured in devlogs.
 - ⚠ **checkout freshness: degraded** — 2 of 30 audited checkouts were NOT at their shipped state. Verdicts for these repos may report merged work as outstanding.
   - ⚠ `.claude` audited on branch `claude-config/autonomous-landing-recovery-20260826-163444-4e8a44f9`, not the remote default branch
-  - ⚠ `ticket-price-tracker` audited on branch `codex/roadmap-metadata-devlog-20260720`, not the remote default branch
+  - ⚠ A personal price-tracking project was audited on a feature branch, not the remote default branch
 
 ## Rollups (whack-a-mole signals)
 

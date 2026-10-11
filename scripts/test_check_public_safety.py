@@ -67,3 +67,13 @@ def test_public_site_literals_and_css_colors_are_allowed(tmp_path: pathlib.Path)
 
     assert result.returncode == 0
     assert "clean: 0 findings" in result.stdout
+
+
+def test_ticket_price_tracker_slug_is_detected(tmp_path: pathlib.Path) -> None:
+    slug = "ticket-price" "-tracker"
+    (tmp_path / "sample.md").write_text(f"{slug}\n", encoding="utf-8")
+
+    result = run_scan(tmp_path)
+
+    assert result.returncode == 1
+    assert "[personal domain] 'ticket-price" "-tracker'" in result.stdout

