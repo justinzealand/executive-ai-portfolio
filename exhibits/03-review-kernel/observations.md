@@ -1,4 +1,4 @@
-_Provenance: `observations.json` is the verbatim stdout of the review kernel's own observations module, run against the live packet store on 2026-09-04; this note explains it. Snapshot 2026-09-04._
+_Provenance: `observations.json` is the verbatim stdout of the review kernel's own observations module, run against the live packet store on 2026-10-10; this note explains it. Snapshot 2026-09-04, metrics regenerated 2026-10-10._
 _Redacted: the command's filesystem paths are generalized here (the JSON itself contains no paths)._
 _Content otherwise unchanged._
 
@@ -31,9 +31,9 @@ The observations module is the same code the daily health check `review_kernel.o
 | `escalations` | Tier-L packets that were escalated to Tier S mid-review (an escalation supersedes the predecessor packet). |
 | `budgets`, `evidence_*`, `recent_*`, `latency_evidence` | Configuration echo and the sub-window the latency percentiles were computed over; `latency_evidence: ok` means the sample was large enough to report. |
 
-## Reading the 2026-09-04 snapshot
+## Reading the 2026-10-10 snapshot
 
-329 attempts, 323 content verdicts (98.2%), 6 harness faults (1.8%), p50 54.2 s, p95 120.5 s, zero quota faults, zero escalations, no attempt waited more than 10 ms for admission.
+600 attempts, 591 content verdicts (98.5%), 9 harness faults (1.5%), p50 56.2 s, p95 114.3 s, zero quota faults, zero escalations, no attempt waited more than 100 ms for admission.
 
 ## The acceptance snapshot it extends
 

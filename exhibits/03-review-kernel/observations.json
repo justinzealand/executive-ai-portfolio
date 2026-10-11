@@ -1,26 +1,26 @@
 {
-  "attempts": 329,
+  "attempts": 600,
   "budgets": {
     "claudecode": 4,
     "codex": 4,
     "openclaw": 4
   },
-  "content_verdicts": 323,
+  "content_verdicts": 591,
   "escalations": [],
-  "evidence_attempts": 329,
+  "evidence_attempts": 600,
   "evidence_window_days": 400.0,
-  "fault_rate": 0.0182370820668693,
-  "harness_faults": 6,
+  "fault_rate": 0.015,
+  "harness_faults": 9,
   "high_water": {
     "codex": 2,
     "openclaw": 2
   },
   "latency_evidence": "ok",
-  "max_admission_wait_s": 0.009338855743408203,
-  "pass_p50_s": 54.18664598464966,
-  "pass_p95_s": 120.49796509742737,
+  "max_admission_wait_s": 0.09148907661437988,
+  "pass_p50_s": 56.19681406021118,
+  "pass_p95_s": 114.33532977104187,
   "quota_faults": 0,
-  "recent_pass_p50_s": 54.18664598464966,
-  "recent_pass_p95_s": 120.49796509742737,
+  "recent_pass_p50_s": 56.19681406021118,
+  "recent_pass_p95_s": 114.33532977104187,
   "window_days": 400.0
 }

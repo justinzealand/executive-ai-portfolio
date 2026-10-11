@@ -29,9 +29,9 @@ Every metric in the README or a case study has a source that can be regenerated 
 
 | Metric | Source | What it supports | What it does not support |
 |---|---|---|---|
-| ~5-month window (2026-03-27 →) | earliest attributable session and first commit in the environment's repositories | sustained operation | outcomes or scale; it is a duration, not a result |
-| 96 consecutive days of health observations | one dated JSON per day from the deterministic health collector, no gaps | continuity of operation | that the platform was healthy (the verdict was red on most of those days) |
-| Review kernel: 329 attempts, 323 content verdicts (98.2%), 6 harness faults (1.8%), p50 54s, p95 121s | the kernel's own packet ledger, regenerated 2026-09-04 (Exhibit 03) | reliability of the review harness against targets I froze in advance | quality of the reviewed plans; enterprise service levels |
+| ~6-month window (2026-03-27 →) | earliest attributable session and first commit in the environment's repositories | sustained operation | outcomes or scale; it is a duration, not a result |
+| 132 consecutive days of health observations | one dated JSON per day from the deterministic health collector, no gaps | continuity of operation | that the platform was healthy (the verdict was red on most of those days) |
+| Review kernel: 600 attempts, 591 content verdicts (98.5%), 9 harness faults (1.5%), p50 56s, p95 114s | the kernel's own packet ledger, regenerated 2026-10-10 (Exhibit 03) | reliability of the review harness against targets I froze in advance | quality of the reviewed plans; enterprise service levels |
 | 4,419 operator prompts / 240 manually reviewed samples over 30 days | a reproducible prompt-log analysis with a documented correction (Exhibit 08) | the size and shape of the human coordination burden | productivity improvement; anything about other operators |
 
 Activity counts (commits, pull requests, tests, memory files, lines of code) exist and are large. They are deliberately not published: they measure agent activity, which is exactly the thing this work argues is the wrong measure.
@@ -49,4 +49,4 @@ Activity counts (commits, pull requests, tests, memory files, lines of code) exi
 
 ## 6. Source discipline for this repository
 
-Everything here is an excerpt or a sanitized copy of a private artifact, snapshotted 2026-09-04. Redaction removed filesystem paths, hostnames, network identifiers, messaging channel identifiers, personal contacts, and the names of personal-domain products; it did not alter reasoning, dates, failure detail, or numbers. Raw prompt corpora and session transcripts are deliberately unpublished. A public-safety check runs against every file before publication.
+Everything here is an excerpt or a sanitized copy of a private artifact, snapshotted 2026-09-04, with the duration, health-day count, and review-kernel metrics refreshed 2026-10-10. Redaction removed filesystem paths, hostnames, network identifiers, messaging channel identifiers, personal contacts, and the names of personal-domain products; it did not alter reasoning, dates, failure detail, or numbers. Raw prompt corpora and session transcripts are deliberately unpublished. A public-safety check runs against every file before publication.

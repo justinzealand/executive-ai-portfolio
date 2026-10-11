@@ -29,56 +29,25 @@ PATTERNS = {
     "session id": re.compile(r"\b(?!abc12345-)[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b"),
     "secret-like": re.compile(r"xox[abp]-|sk-[A-Za-z0-9]{20,}|ghp_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}"),
 }
-SKIP_DIRS = {".git", ".playwright-cli", "__pycache__", ".pytest_cache"}
-ALLOW_FILES = {
-    "scripts/check_public_safety.py",
-    "scripts/check_site.py",
-    "site-src/assets/headshot.jpeg",
-    "site-src/assets/headshot-justin-zealand.jpg",
-    "site-src/assets/justin-zealand-resume.pdf",
-    "site-src/assets/zealand-technology-logo.png",
-    "site-src/assets/zealand-technology-text.png",
-    "dist/assets/headshot.jpeg",
-    "dist/assets/headshot-justin-zealand.jpg",
-    "dist/assets/justin-zealand-resume.pdf",
-    "dist/assets/zealand-technology-logo.png",
-    "dist/assets/zealand-technology-text.png",
-}
+SKIP_DIRS = {".git", "__pycache__", ".pytest_cache"}
+ALLOW_FILES = {"scripts/check_public_safety.py"}
 # Literals reviewed by hand and accepted (public URL; test fixture with no real path).
-ALLOWED_LITERALS = (
-    "linkedin.com/in/justinzealand",
-    "github.com/justinzealand/executive-ai-portfolio",
-    "portfolio.zealand.technology",
-    "zealand.technology",
-    "zealandtech@gmail.com",
-    '"mv ~/foo.plist ~/tmp/"',
-)
+ALLOWED_LITERALS = ("linkedin.com/in/justinzealand", "github.com/justinzealand/executive-ai-portfolio", '"mv ~/foo.plist ~/tmp/"')
 
 
 def allowed_match(line: str, match: re.Match[str]) -> bool:
     """Allow only the reviewed literal itself, never unrelated text on its line."""
-    for literal in ALLOWED_LITERALS:
-        start = line.find(literal)
-        while start >= 0:
-            if start <= match.start() and match.end() <= start + len(literal):
-                return True
-            start = line.find(literal, start + 1)
-    return False
+    return any(
+        start <= match.start() and match.end() <= start + len(literal)
+        for literal in ALLOWED_LITERALS
+        for start in (line.find(literal),)
+        if start >= 0
+    )
 
 
 def svg_css_selector(line: str) -> bool:
     """Avoid treating an SVG CSS selector as a Slack channel name."""
     return bool(re.search(r"(?:^|[;{}\s])[#.][a-z][a-z0-9_-]*\s*(?:[,{])", line, re.I))
-
-
-def css_color(file: pathlib.Path, match: re.Match[str]) -> bool:
-    return file.suffix == ".css" and bool(re.fullmatch(r"#[0-9a-f]{3,8}", match.group(0), re.I))
-
-
-def html_fragment(file: pathlib.Path, line: str, match: re.Match[str]) -> bool:
-    if file.suffix != ".html":
-        return False
-    return f'href="{match.group(0)}"' in line or f"href='{match.group(0)}'" in line
 
 def main() -> int:
     root = pathlib.Path(__file__).resolve().parent.parent
@@ -100,8 +69,6 @@ def main() -> int:
                 if name == "slack channel name" and f.suffix == ".svg" and svg_css_selector(line):
                     continue  # CSS id selectors (#my-svg) are not channel names
                 for m in rx.finditer(line):
-                    if name == "slack channel name" and (css_color(f, m) or html_fragment(f, line, m)):
-                        continue
                     if allowed_match(line, m):
                         continue
                     hits += 1

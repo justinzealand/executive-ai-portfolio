@@ -1,12 +1,6 @@
 # Executive AI Portfolio
 
-Field evidence and executive lessons from five months operating a private AI-native engineering environment: agentic systems, governance as code, and what changes for technology leadership.
-
-The companion website is prepared for `https://portfolio.zealand.technology/`,
-as a separate Cloudflare Pages project in the same account as
-`https://zealand.technology/`. The company mark links to the corporate site;
-the “Executive portfolio” label and primary navigation remain within this site.
-Public deployment and DNS activation are separate operational steps.
+Field evidence and executive lessons from six months operating a private AI-native engineering environment: agentic systems, governance as code, and what changes for technology leadership.
 
 **Who.** I am a technology executive with 20+ years leading product and engineering organizations, most recently as VP of Engineering for a technology company supporting a $300M+ recurring-revenue business. Before this work I led organizations of 100+ across startup, growth-stage, and Fortune 500 environments, managed multimillion-dollar technology budgets, and held engineering, product, and go-to-market responsibility. [LinkedIn](https://www.linkedin.com/in/justinzealand)
 
@@ -14,7 +8,7 @@ Public deployment and DNS activation are separate operational steps.
 
 **Why this matters to my work as an executive.** I built this environment to answer the questions I would need to answer before changing how a real engineering organization operates. What work should agents own? Where must humans retain authority? What happens when implementation capacity stops being the primary constraint? How should architecture, review, governance, management, and decision rights change? This repository documents the operating evidence; my professional record provides the organizational context.
 
-**What.** From March 2026 I designed and operated a private multi-agent engineering environment in which Claude Code, Codex, OpenClaw, Hermes, and local models performed implementation and delegated work, coordinated through a deterministic control plane, while I acted as product owner and architect. It ran continuously, accumulated 96 consecutive days of health observations at the time of writing, and was governed by a written charter enforced in code.
+**What.** From March 2026 I designed and operated a private multi-agent engineering environment in which Claude Code, Codex, OpenClaw, Hermes, and local models performed implementation and delegated work, coordinated through a deterministic control plane, while I acted as product owner and architect. It ran continuously, accumulated 132 consecutive days of health observations at the time of writing, and was governed by a written charter enforced in code.
 
 **What it produced.** Working products, not demos: an AI chief-of-staff assembling a daily command brief across mail, calendar, tasks, and system health; a delegated-work engine with human approval gates and durable run history; a self-healing observability system with automated incident investigation; a local knowledge and retrieval service; a multi-model decision-review pipeline; and native applications and integration services. I served as product owner and architect for this work, defining the problems, priorities, architecture, constraints, and acceptance criteria.
 
@@ -43,7 +37,7 @@ This was a private, single-operator laboratory, not a customer-facing production
 |---|---|
 | [01 Charter and operating contract](exhibits/01-charter-and-operating-contract.md) | Decision rights, hard constraints, and the tripwires that route work to a human |
 | [02 Proportional governance](exhibits/02-proportional-governance/) | The policy, the drift investigation, and the dated timeline of the governance failure and correction |
-| [03 Review kernel](exhibits/03-review-kernel/) | Second-generation multi-model review: design, state model, and measured acceptance (329 attempts, 98.2% content verdicts, 1.8% harness faults, p50 54s) |
+| [03 Review kernel](exhibits/03-review-kernel/) | Second-generation multi-model review: design, state model, and measured acceptance (600 attempts, 98.5% content verdicts, 1.5% harness faults, p50 56s) |
 | [04 Governance as code](exhibits/04-governance-as-code/) | Five runtime guards with tests, including the warn-first promotion contract for new controls |
 | [05 Overnight orchestrator](exhibits/05-overnight-orchestrator.md) | Bounded nightly detect-and-fix with kill switches, caps, and post-action verification |
 | [06 Autonomy gating](exhibits/06-autonomy-gating.md) | Design notes for the autonomous merge lane: attended vs unattended paths, default deny |

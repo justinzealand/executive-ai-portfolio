@@ -31,7 +31,7 @@ A private environment spanning Claude Code, Codex, OpenClaw, Hermes, and local m
 
 ## What happened
 
-The environment became a working laboratory rather than a demonstration. Over roughly five months it produced real products that I owned end to end as product owner and architect: an AI chief-of-staff command brief, a delegated-work engine with human approvals, a self-healing observability plugin with automated incident investigation, a guarded email-brief workflow, a local knowledge service with retrieval, a decision-review pipeline, macOS integration servers, a native iOS app, and several personal-domain tools. Multiple runtimes operated through a shared work fabric, persistent services, scheduled workflows, and human-approval mechanisms.
+The environment became a working laboratory rather than a demonstration. Over roughly six months it produced real products that I owned end to end as product owner and architect: an AI chief-of-staff command brief, a delegated-work engine with human approvals, a self-healing observability plugin with automated incident investigation, a guarded email-brief workflow, a local knowledge service with retrieval, a decision-review pipeline, macOS integration servers, a native iOS app, and several personal-domain tools. Multiple runtimes operated through a shared work fabric, persistent services, scheduled workflows, and human-approval mechanisms.
 
 The objective manager demonstrated, in a live campaign, autonomous completion, a human decision delivered through Slack and resumed correctly, bounded retry, worker replacement, restart persistence, failure containment, and terminal evidence.
 
