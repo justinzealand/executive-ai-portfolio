@@ -14,7 +14,7 @@ from xml.sax.saxutils import escape
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "site-src"
 OUTPUT = ROOT / "dist"
-CANONICAL_BASE = "https://justinzealand.github.io/executive-ai-portfolio/"
+CANONICAL_BASE = "https://portfolio.zealand.technology/"
 
 PAGES = {
     "index.html": {

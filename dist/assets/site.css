@@ -102,6 +102,13 @@ a:focus-visible, button:focus-visible {
   display: inline-flex;
   align-items: center;
   min-width: 0;
+  gap: .65rem;
+}
+
+.wordmark-company {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
   min-height: 44px;
   gap: .65rem;
   text-decoration: none;
@@ -142,14 +149,22 @@ a:focus-visible, button:focus-visible {
 }
 
 .wordmark-context {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--header-muted);
   font-size: .8rem;
   font-weight: 700;
   letter-spacing: .1em;
   line-height: 1.25;
+  text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
 }
+.wordmark-company:hover,
+.wordmark-company:focus-visible,
+.wordmark-context:hover,
+.wordmark-context:focus-visible { color: var(--accent-bright); }
 
 .primary-nav {
   display: flex;

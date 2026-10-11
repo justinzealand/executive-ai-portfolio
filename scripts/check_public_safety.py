@@ -45,7 +45,8 @@ ALLOW_FILES = {
 ALLOWED_LITERALS = (
     "linkedin.com/in/justinzealand",
     "github.com/justinzealand/executive-ai-portfolio",
-    "justinzealand.github.io/executive-ai-portfolio",
+    "portfolio.zealand.technology",
+    "zealand.technology",
     "zealandtech@gmail.com",
     '"mv ~/foo.plist ~/tmp/"',
 )

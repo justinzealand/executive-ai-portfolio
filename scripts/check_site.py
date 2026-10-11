@@ -44,7 +44,7 @@ class PageParser(HTMLParser):
             self.html_language = values.get("lang") or ""
         if tag == "h1":
             self.h1_count += 1
-        if tag == "img" and not (values.get("alt") or "").strip():
+        if tag == "img" and "alt" not in values:
             self.images_without_alt += 1
         for attribute in ("href", "src", "srcset"):
             if values.get(attribute):
@@ -101,6 +101,10 @@ def main() -> int:
             errors.append(f"{relative}: missing skip link")
         if 'rel="canonical"' not in text:
             errors.append(f"{relative}: missing canonical URL")
+        if 'href="https://portfolio.zealand.technology/' not in text:
+            errors.append(f"{relative}: canonical URL must use portfolio.zealand.technology")
+        if 'href="https://zealand.technology/"' not in text:
+            errors.append(f"{relative}: missing Zealand Technology return link")
         if "github.com/justinzealand/executive-ai-portfolio" not in text:
             errors.append(f"{relative}: missing primary GitHub evidence link")
         for label, pattern in PRIVATE_PATTERNS.items():
